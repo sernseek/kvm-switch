@@ -1,0 +1,13 @@
+[package]
+name = "kvm-switch"
+version = "0.1.0"
+edition = "2024"
+license = "MIT"
+description = "Share one keyboard and mouse between a Wayland host and a passthrough guest by screen edge"
+
+[dependencies]
+anyhow = "1.0"
+evdev = "0.13"
+libc = "0.2"
+smithay-client-toolkit = { version = "0.21", default-features = false, features = ["calloop"] }
+vsock = "0.5"
