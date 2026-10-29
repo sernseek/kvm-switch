@@ -39,6 +39,22 @@ The clipboard is not part of this project:
 [clipboard-bridge](https://github.com/sernseek/clipboard-bridge) follows the
 router's switches (`--guest-port`) and carries text, HTML, images and files.
 
+## Alternatives
+
+- QEMU's evdev input (libvirt `<input type='evdev'>` with `grabToggle`, or
+  helpers such as [generate-evdev](https://github.com/portellam/generate-evdev))
+  hands devices to the guest as virtual hardware too, but switches with a
+  hotkey only.
+- [evdevkm](https://github.com/rasmusln/evdevkm) routes grabbed devices to a
+  host or a guest pair of uinput devices, the same core as the router here,
+  also switched by a hotkey.
+- Network software KVMs ([lan-mouse](https://github.com/feschber/lan-mouse),
+  Input Leap, Deskflow) switch at screen edges, but a client program in the
+  guest injects the input, which does not reach the logon screen or UAC
+  prompts and needs the guest's network.
+- [Looking Glass](https://looking-glass.io/) forwards input while its window
+  on the host has focus; this project is for a guest on its own monitor.
+
 ## Protocols
 
 Control socket (`/run/kvm-switch/control.sock`, `KVM_SWITCH_SOCKET` overrides
